@@ -1,0 +1,69 @@
+<a [routerLink]="['/listings']">Back</a>
+<br>
+<h2 class="page-header">Edit Listing</h2>
+<form (submit)="onEditSubmit()" class="form-margin" #listingForm="ngForm">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input class="form-control" type="text" name="title" id="title" [(ngModel)]="title" required #titleName="ngModel">
+    <div *ngIf="titleName.errors && (titleName.dirty || titleName.touched)" class="alert alert-danger">
+      <div [hidden]="!titleName.errors.required">
+        Title is required!
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="title">City</label>
+    <input class="form-control" type="text" name="city" id="city" [(ngModel)]="city" required #cityName="ngModel">
+    <div *ngIf="cityName.errors && (cityName.dirty || cityName.touched)" class="alert alert-danger">
+      <div [hidden]="!cityName.errors.required">
+        City is required!
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="title">Owner</label>
+    <input class="form-control" type="text" name="owner" id="owner" [(ngModel)]="owner" required #ownerName="ngModel">
+    <div *ngIf="ownerName.errors && (ownerName.dirty || ownerName.touched)" class="alert alert-danger">
+      <div [hidden]="!ownerName.errors.required">
+        Owner is required!
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="title">Bedrooms</label>
+    <input class="form-control" type="text" name="bedrooms" id="bedrooms" [(ngModel)]="bedrooms" required #bedroomsName="ngModel">
+    <div *ngIf="bedroomsName.errors && (bedroomsName.dirty || bedroomsName.touched)" class="alert alert-danger">
+      <div [hidden]="!bedroomsName.errors.required">
+        Bedrooms is required!
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="title">Type</label>
+    <select class="form-control" name="type" id="type" [(ngModel)]="type" required #typeName="ngModel">
+      <option value="Estate">Estate</option>
+      <option value="Condo">Condo</option>
+      <option value="Apartment">Apartment</option>
+    </select>
+    <div *ngIf="typeName.errors && (typeName.dirty || typeName.touched)" class="alert alert-danger">
+      <div [hidden]="!typeName.errors.required">
+        Type is required!
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="file" name="image" id="image" [(ngModel)]="image">
+  </div>
+  <div class="form-group">
+    <label for="title">Price</label>
+    <input class="form-control" type="text" name="price" id="price" [(ngModel)]="price" required #priceName="ngModel">
+    <div *ngIf="priceName.errors && (priceName.dirty || priceName.touched)" class="alert alert-danger">
+      <div [hidden]="!priceName.errors.required">
+        Price is required!
+      </div>
+    </div>
+  </div>
+  <input type="submit" value="Save" class="btn btn-success" [disabled]="!listingForm.form.valid">
+</form>
+
+<div class="loader" *ngIf="loading"></div>
